@@ -23,7 +23,7 @@ if(!isset($_SESSION['admin'])){
 <div class="container">
 
     <div class="sidebar">
-        <h2>SRMS</h2>
+        <h2>Management System</h2>
 
         <ul>
             <li><a href="#">Dashboard</a></li>
