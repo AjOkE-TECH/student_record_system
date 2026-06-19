@@ -32,10 +32,6 @@ body{
     list-style:none;
 }
 
-.sidebar ul li{
-    margin:15px 0;
-}
-
 .sidebar ul li a{
     color:white;
     text-decoration:none;
@@ -123,7 +119,7 @@ button:hover{
 
 .student-form input,
 .student-form select{
-    width:100%;
+    width:50%;
     padding:12px;
     margin-bottom:15px;
     border:1px solid #ddd;
