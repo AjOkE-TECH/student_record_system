@@ -68,23 +68,23 @@ if(isset($_POST['add_student'])){
 
         <form method="POST" class="student-form">
 
-            <input type="text" name="matric_no" placeholder="Matric Number" required>
+            <input type="text" name="matric_no" placeholder="e.g NCSF/23/0025" required>
 
-            <input type="text" name="firstname" placeholder="First Name" required>
+            <input type="text" name="firstname" placeholder="e.g Sekinat" required>
 
-            <input type="text" name="lastname" placeholder="Last Name" required>
+            <input type="text" name="lastname" placeholder="e.g Mutolib" required>
 
             <select name="gender" required>
-                <option value="">Select Gender</option>
-                <option>Male</option>
-                <option>Female</option>
+            <option value="">Select Gender</option>
+            <option>Male</option>
+            <option>Female</option>
             </select>
 
-            <input type="text" name="department" placeholder="Department" required>
+            <input type="text" name="department" placeholder="e.g Computer Science" required>
 
-            <input type="text" name="level" placeholder="Level" required>
+            <input type="text" name="level" placeholder="e.g ND II" required>
 
-            <input type="text" name="phone" placeholder="Phone Number">
+            <input type="text" name="phone" placeholder="e.g 07051716653">
 
             <button type="submit" name="add_student">
                 Add Student

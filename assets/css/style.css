@@ -207,3 +207,17 @@ table th{
 .search-form button:hover{
     background:#008000;
 }
+
+.card-link{
+    text-decoration:none;
+    color:inherit;
+}
+
+.card-link .card{
+    transition:0.3s;
+}
+
+.card-link .card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}

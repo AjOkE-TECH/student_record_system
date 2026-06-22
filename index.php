@@ -25,6 +25,11 @@
             Login
         </button>
 
+        <p>
+           Don't have an account?
+           <a href="register.php">Create Account</a>
+       </p>
+
     </form>
 </div>
 

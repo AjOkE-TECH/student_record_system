@@ -48,15 +48,19 @@ if(!isset($_SESSION['admin'])){
                 <p><?php echo $count_data['total']; ?></p>
             </div>
 
-            <div class="card">
-                <h3>Search Records</h3>
-                <p>Quick Access</p>
-            </div>
+           <a href="search_student.php" class="card-link">
+           <div class="card">
+             <h3>Search Records</h3>
+             <p>Quick Access</p>
+           </div>
+          </a>
 
-            <div class="card">
+           <a href="view_students.php" class="card-link">
+              <div class="card">
                 <h3>Manage Students</h3>
                 <p>CRUD Operations</p>
-            </div>
+              </div>
+          </a>
 
         </div>
 
