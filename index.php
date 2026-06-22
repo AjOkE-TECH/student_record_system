@@ -1,43 +1,32 @@
-<?php
-session_start();
-include "config/database.php";
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
 
-if(isset($_POST['login'])){
+<div class="login-container">
+    <h2>Admin Login</h2>
 
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    <form action="login.php" method="POST">
 
-    $query = mysqli_query(
-    $conn,
-    "SELECT * FROM admins
-     WHERE username='$username'"
-);
+        <input type="text"
+               name="username"
+               placeholder="Username"
+               required>
 
-if(mysqli_num_rows($query) > 0){
+        <input type="password"
+               name="password"
+               placeholder="Password"
+               required>
 
-    $admin = mysqli_fetch_assoc($query);
+        <button type="submit" name="login">
+            Login
+        </button>
 
-    if(password_verify($password, $admin['password'])){
+    </form>
+</div>
 
-        $_SESSION['admin'] = $username;
-
-        header("Location: dashboard.php");
-        exit();
-
-    }else{
-        echo "Invalid Password";
-    }
-
-}else{
-    echo "User not found";
-}
-
-        $_SESSION['admin'] = $username;
-
-        header("Location: dashboard.php");
-        exit();
-
-    }else{
-        echo "Invalid Username or Password";
-    }
-?>
+</body>
+</html>
