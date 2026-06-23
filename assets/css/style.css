@@ -160,6 +160,18 @@ table th{
     color:white;
 }
 
+.action-buttons{
+    display:flex;
+    gap:8px;
+    align-items:center;
+}
+
+.edit-btn,
+.delete-btn{
+    display:inline-block;
+    min-width:70px;
+    text-align:center;
+}
 .edit-btn{
     background:#008000;
     color:white;

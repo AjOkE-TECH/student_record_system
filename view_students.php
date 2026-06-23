@@ -63,12 +63,14 @@ $query = mysqli_query($conn, "SELECT * FROM students ORDER BY id DESC");
                 <td><?php echo $row['phone']; ?></td>
 
                 <td>
-                    <a href="edit_student.php?id=<?php echo $row['id']; ?>" class="edit-btn">Edit</a>
+                   <div class="action-buttons">
+                       <a href="edit_student.php?id=<?php echo $row['id']; ?>" class="edit-btn">Edit</a>
 
-                    <a href="delete_student.php?id=<?php echo $row['id']; ?>" class="delete-btn"
-                       onclick="return confirm('Are you sure you want to delete this student?')">
-                       Delete
-                    </a>
+                         <a href="delete_student.php?id=<?php echo $row['id']; ?>" class="delete-btn"
+                           onclick="return confirm('Are you sure you want to delete this student?')">
+                           Delete
+                       </a>
+                   </div>
                 </td>
             </tr>
 
