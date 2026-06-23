@@ -1,6 +1,13 @@
 <?php
 include "config/database.php";
 
+$check_admin = mysqli_query($conn, "SELECT * FROM admins");
+
+if(mysqli_num_rows($check_admin) > 0){
+    header("Location: index.php");
+    exit();
+}
+
 if(isset($_POST['register'])){
 
     $username = $_POST['username'];

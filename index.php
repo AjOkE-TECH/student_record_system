@@ -1,3 +1,14 @@
+<?php
+include "config/database.php";
+
+$check_admin = mysqli_query($conn, "SELECT * FROM admins");
+
+if(mysqli_num_rows($check_admin) == 0){
+    header("Location: register.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>

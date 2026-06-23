@@ -8,36 +8,27 @@ if(isset($_POST['login'])){
     $password = $_POST['password'];
 
     $query = mysqli_query(
-    $conn,
-    "SELECT * FROM admins
-     WHERE username='$username'"
-);
+        $conn,
+        "SELECT * FROM admins WHERE username='$username'"
+    );
 
-if(mysqli_num_rows($query) > 0){
+    if(mysqli_num_rows($query) > 0){
 
-    $admin = mysqli_fetch_assoc($query);
+        $admin = mysqli_fetch_assoc($query);
 
-    if(password_verify($password, $admin['password'])){
+        if(password_verify($password, $admin['password'])){
 
-        $_SESSION['admin'] = $username;
+            $_SESSION['admin'] = $admin['username'];
 
-        header("Location: dashboard.php");
-        exit();
+            header("Location: dashboard.php");
+            exit();
+
+        }else{
+            echo "<script>alert('Invalid password'); window.location='index.php';</script>";
+        }
 
     }else{
-        echo "Invalid Password";
+        echo "<script>alert('Account not found. Please register first.'); window.location='register.php';</script>";
     }
-
-}else{
-    echo "User not found";
 }
-
-        $_SESSION['admin'] = $username;
-
-        header("Location: dashboard.php");
-        exit();
-
-    }else{
-        echo "Invalid Username or Password";
-    }
 ?>
