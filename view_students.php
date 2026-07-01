@@ -8,7 +8,19 @@ if(!isset($_SESSION['admin'])){
 
 include "config/database.php";
 
-$query = mysqli_query($conn, "SELECT * FROM students ORDER BY id DESC");
+$limit = 10;
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$start = ($page - 1) * $limit;
+
+$query = mysqli_query($conn,
+    "SELECT * FROM students ORDER BY id DESC LIMIT $start, $limit");
+
+$total_query = mysqli_query($conn,
+    "SELECT COUNT(id) AS total FROM students");
+
+$total_result = mysqli_fetch_assoc($total_query);
+$total_records = $total_result['total'];
+$total_pages = ceil($total_records / $limit);
 ?>
 
 <!DOCTYPE html>
@@ -39,6 +51,20 @@ $query = mysqli_query($conn, "SELECT * FROM students ORDER BY id DESC");
             <h1>Student Records</h1>
         </div>
 
+        <!-- Top Actions -->
+        <div class="top-actions">
+
+            <form action="search_student.php" method="GET" class="search-form">
+                <input type="text" name="search"
+                    placeholder="Search by name or matric number">
+                <button type="submit">Search</button>
+            </form>
+
+            <a href="add_student.php" class="create-btn">+ Create Student</a>
+
+        </div>
+
+        <!-- Student Table -->
         <table>
             <tr>
                 <th>ID</th>
@@ -52,7 +78,6 @@ $query = mysqli_query($conn, "SELECT * FROM students ORDER BY id DESC");
             </tr>
 
             <?php while($row = mysqli_fetch_assoc($query)){ ?>
-
             <tr>
                 <td><?php echo $row['id']; ?></td>
                 <td><?php echo $row['matric_no']; ?></td>
@@ -63,20 +88,29 @@ $query = mysqli_query($conn, "SELECT * FROM students ORDER BY id DESC");
                 <td><?php echo $row['phone']; ?></td>
 
                 <td>
-                   <div class="action-buttons">
-                       <a href="edit_student.php?id=<?php echo $row['id']; ?>" class="edit-btn">Edit</a>
+                    <div class="action-buttons">
+                        <a href="edit_student.php?id=<?php echo $row['id']; ?>" class="edit-btn">✏</a>
 
-                         <a href="delete_student.php?id=<?php echo $row['id']; ?>" class="delete-btn"
+                        <a href="delete_student.php?id=<?php echo $row['id']; ?>"
+                           class="delete-btn"
                            onclick="return confirm('Are you sure you want to delete this student?')">
-                           Delete
-                       </a>
-                   </div>
+                           🗑
+                        </a>
+                    </div>
                 </td>
             </tr>
-
             <?php } ?>
 
         </table>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            <?php for($i = 1; $i <= $total_pages; $i++){ ?>
+                <a href="view_students.php?page=<?php echo $i; ?>">
+                    <?php echo $i; ?>
+                </a>
+            <?php } ?>
+        </div>
 
     </div>
 
